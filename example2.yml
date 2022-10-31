@@ -1,0 +1,19 @@
+---
+- name: Handy Ansible Logic
+  gather_facts: false
+  hosts: localhost
+  vars:
+    var_one: 1
+    var_two: 2
+    var_three: 3
+  tasks:
+
+  - name: Set 
+    set_fact:
+      output:
+        param_a: "{{ var_one }}"
+        param_b: "{{ var_two if var_one == 1 else var_three }}"
+      
+  - name: Print Output
+    debug: 
+      var: output
